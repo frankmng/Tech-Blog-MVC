@@ -16,8 +16,12 @@
 			<li><strong><a href="/">The Tech Frontier</a></strong></li>
 		</ul>
 		<ul>
-			<li><a href="/signup">Sign up</a></li>
-			<li><a href="/login" role="button">Login</a></li>
+			{{#if logged_in}}
+				<li><a href="/logout">Logout</a></li>
+			{{else}}
+				<li><a href="/login">Sign up</a></li>
+				<li><a href="/login" role="button">Login</a></li>
+			{{/if}}
 		</ul>
 		</nav>
 	</div>
