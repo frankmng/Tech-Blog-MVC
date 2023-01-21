@@ -9,7 +9,11 @@
 </head>
 
 <body>
-asfsafsa
+{{#if user}}
+    <h2>Welcome, {{user.name}}!</h2>
+{{else}}
+  <a href="/login">login</a>
+{{/if}}
 </body>
 
 </html>

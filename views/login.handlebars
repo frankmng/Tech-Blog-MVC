@@ -1,39 +1,23 @@
-<!-- Button to trigger the modal -->
-<button class="contrast"
-  data-target="modal-example"
-  onClick="toggleModal(event)">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<dialog id="modal-example">
-  <article>
-    <a href="#close"
-      aria-label="Close"
-      class="close"
-      data-target="modal-example"
-      onClick="toggleModal(event)">
-    </a>
-    <h3>Confirm your action!</h3>
-    <p>
-      Cras sit amet maximus risus. 
-      Pellentesque sodales odio sit amet augue finibus pellentesque. 
-      Nullam finibus risus non semper euismod.
-    </p>
-    <footer>
-      <a href="#cancel"
-        role="button"
-        class="secondary"
-        data-target="modal-example"
-        onClick="toggleModal(event)">
-        Cancel
-      </a>
-      <a href="#confirm"
-        role="button"
-        data-target="modal-example"
-        onClick="toggleModal(event)">
-        Confirm
-      </a>
-    </footer>
-  </article>
-</dialog>
+<main class="container" style="margin-top: 50px;">
+    <div class="grid" >
+        <article >
+            <h3 class="text-center">Sign up</h3>
+            <form class="signup-form">
+                <input type="text" name="Username" placeholder="Username" aria-label="Username" autocomplete="Username" id="username-signup">
+                <input type="password" name="password" placeholder="Password" aria-label="Password" autocomplete="current-password" id="password-signup">
+                <button type="submit" class="contrast">Sign up</button>
+            </form>
+        </article>
+        {{!-- <article>
+            <h3>Login in</h3>
+            <form class="login-form">
+                <input type="text" name="login" placeholder="Username" aria-label="Login" autocomplete="nickname" id="email-login">
+                <input type="password" name="password" placeholder="Password" aria-label="Password" autocomplete="current-password" id="email-password">
+                <button type="submit" class="contrast">Login</button>
+            </form>
+        </article> --}}
+    </div>
+</main>
+
+<script src="../js/login.js"></script>
