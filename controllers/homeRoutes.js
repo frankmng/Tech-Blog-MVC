@@ -1,22 +1,21 @@
 const router = require('express').Router();
 const {User} = require('../models')
-router.get('/', async (req, res) => {
 
+router.get('/', async (req, res) => {
     const userData = await User.findByPk(req.session.user_id)
-    const user = userData.get({ plain: true });
 
     res.render('homepage', {
-      user,
-      logged_in: true
+      userData,
+      logged_in: req.session.logged_in 
     });
 })
 
 
 router.get('/login', (req, res) => {
-    // if (req.session.logged_in) {
-    //   res.redirect('/profile');
-    //   return;
-    // }
+    if (req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
   
     res.render('login');
   });
