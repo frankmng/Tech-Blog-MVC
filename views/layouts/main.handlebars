@@ -17,7 +17,7 @@
 		</ul>
 		<ul>
 			{{#if logged_in}}
-				<li><a href="/logout">Logout</a></li>
+				<li id='logout' role="button">Logout</li>
 			{{else}}
 				<li><a href="/login">Sign up</a></li>
 				<li><a href="/login" role="button">Login</a></li>
@@ -28,6 +28,10 @@
 	<div class="container">
 		{{{ body }}}
 	</div>
-</body>
 
+{{#if logged_in}}
+	<script src="/js/logout.js"></script>
+{{/if}}
+
+</body>
 </html>
