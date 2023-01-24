@@ -1,10 +1,11 @@
 const { Router } = require('express');
 const { Post, Comment } = require('../../models');
-const withAuth = require('../../utils/auth');
+const isLoggedIn = require('../../middleware/auth');
 
 const postRouter = new Router();
 
-postRouter.post('/', withAuth, async (req, res) => {
+// add a new post
+postRouter.post('/', isLoggedIn, async (req, res) => {
     const { name, description } = req.body;
 
     try {
@@ -19,7 +20,8 @@ postRouter.post('/', withAuth, async (req, res) => {
     }
 })
 
-postRouter.put('/edit/:id', withAuth, async (req, res) => {
+// edit a single post
+postRouter.put('/edit/:id', isLoggedIn, async (req, res) => {
 	const { name, description } = req.body;
 	try {
 		
@@ -40,7 +42,8 @@ postRouter.put('/edit/:id', withAuth, async (req, res) => {
 	}
 });
 
-postRouter.post('/:id', withAuth, async (req, res) => {
+// add a comment
+postRouter.post('/:id', isLoggedIn, async (req, res) => {
     const { description } = req.body;
 		const { id } = req.params;
 
@@ -56,7 +59,8 @@ postRouter.post('/:id', withAuth, async (req, res) => {
     }
 })
 
-postRouter.delete('/delete/:id', withAuth, async (req, res) => {
+// delete a single post
+postRouter.delete('/delete/:id', isLoggedIn, async (req, res) => {
 	try {
 		const post = await Post.destroy({
 			where: {

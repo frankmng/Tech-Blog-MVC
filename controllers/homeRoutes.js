@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models')
-const withAuth = require('../utils/auth');
+const isLoggedIn = require('../middleware/auth');
 
 router.get('/', async (req, res) => {
   try {
@@ -34,13 +34,13 @@ router.get('/login', (req, res) => {
     res.render('login');
   });
 
-router.get('/new-post', withAuth, async (req, res) => {
+router.get('/new-post', isLoggedIn, async (req, res) => {
   res.render('new-post', {
     logged_in: true
   })
 })
 
-router.get('/edit-post/:id', withAuth, async (req, res) => {
+router.get('/edit-post/:id', isLoggedIn, async (req, res) => {
   const postData = await Post.findByPk(req.params.id, {
     include: [
       {
@@ -83,17 +83,7 @@ router.get('/post/:id', async (req, res) => {
   })
 })
 
-// TODO: Fix it so each user will only see their own posts not ALL
-router.get('/dashboard', async (req, res) => {
-  // const postData = await Post.findAll({
-  //   include: [
-  //     {
-  //       model: User,
-  //       attributes: ['name'],
-  //     },
-  //   ],
-  // });
-
+router.get('/dashboard', isLoggedIn, async (req, res) => {
   const userData = await User.findByPk(req.session.user_id, {
     include: [
       {
