@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models')
+const { User, Post, Comment } = require('../models')
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -58,21 +58,55 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
   })
 })
 
+router.get('/post/:id', async (req, res) => {
+  const postData = await Post.findAll( {
+    where: {
+      id: req.params.id
+     },
+     include: [User]
+   })
 
+  const commentData = await Comment.findAll({
+    where: {
+     post_id: req.params.id
+    },
+    include: [User]
+  })
+
+  const posts = postData.map((post) => post.get({ plain: true }));
+  const comments = commentData.map((comment) => comment.get({ plain: true }));
+
+  res.render('single-post', {
+    posts,
+    comments,
+    logged_in: req.session.logged_in
+  })
+})
+
+// TODO: Fix it so each user will only see their own posts not ALL
 router.get('/dashboard', async (req, res) => {
-  const postData = await Post.findAll({
+  // const postData = await Post.findAll({
+  //   include: [
+  //     {
+  //       model: User,
+  //       attributes: ['name'],
+  //     },
+  //   ],
+  // });
+
+  const userData = await User.findByPk(req.session.user_id, {
     include: [
       {
-        model: User,
-        attributes: ['name'],
+        model: Post,
+        attributes: ['name', 'description', 'date_created'],
       },
     ],
   });
 
-  const posts = postData.map((post) => post.get({ plain: true }));
+  const user = userData.get({ plain: true });
 
   res.render('dashboard', {
-    posts,
+    ...user,
     logged_in: req.session.logged_in
   })
 })

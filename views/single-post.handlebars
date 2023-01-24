@@ -1,0 +1,42 @@
+<main class="container" style="margin-top: 100px;" >
+	<div class="grid" style="margin-top: -65px;">
+		<article data-theme="light">
+
+            {{#each posts as |post| }}
+            <h5><strong>{{post.name}}</strong></h5>
+            <p>{{ post.description}}</p>
+            <p>Posted by {{user.name}} on {{format_date post.date_created}}</p><br>
+            <p><strong>Leave a comment</strong></p>
+            <form class="comment-form" >
+                <textarea placeholder="Text" id='comment-description'></textarea>
+                <button type="submit" class="contrast">Comment</button>
+            </form>
+             {{/each}}
+						{{#if comments}}
+            <table >
+                <thead>
+                    <tr>
+                    <th scope="col">Comments</th>
+                    </tr>
+                </thead>
+                    <tbody>
+               		 {{#each comments as |comment| }}
+                    <tr>
+                    <td>
+											{{comment.description}}
+                      <p style="margin-top: 25px;">Commented by {{user.name}} on {{format_date comment.date_created}}</p>	
+												 
+                    </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+              </table>  
+							 {{else}}
+            {{/if}}
+    
+		</article>
+
+	</div>
+</main>
+
+<script src="../js/comment.js"></script>
