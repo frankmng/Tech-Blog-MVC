@@ -7,36 +7,32 @@
 		<div></div>	
 	</div>
 
-	{{!-- {{#each posts as |post| }}
-	<div class="grid" style="margin-top: -65px;">
-			<a href="/edit-post/{{post.id}}"><article data-theme="light">
-				<h5><strong>{{post.name}}</strong></h5>
-				<p>{{post.description}}</p>
-				<p>{{format_date post.date_created}}</p>
-			</article> </a>
-	</div>
-  {{/each}} --}}
-  {{#if posts}}
-<table role="grid">
-  <thead>
-    <tr>
-      <th scope="col">My Posts</th>
-    </tr>
-  </thead>
+
+{{#if posts}}
+	<table role="grid">
+	<thead>
+		<tr>
+		<th scope="col">My Posts</th>
+		</tr>
+	</thead>
 	<tbody>
-    {{#each posts as |post|}}
-    <tr>
-      <td>
-		  <a href="/edit-post/{{post.id}}"><p><strong>{{post.name}}</strong></p></a>
-		  <p style="margin-top:-15px;">{{post.description}}</p>
-	  	  <p>{{ post.date_created}}</p>	
-	  </td>
-    </tr>
-	{{/each}}
-  </tbody>
-</table>  
-{{else}}
-	No posts yet
+		{{#each posts as |post|}}
+		<tr>
+		<td>
+			<p><strong>{{post.name}}</strong></p>
+			<p style="margin-top:-15px;">{{post.description}}</p>
+			<p>{{ format_datepost.date_created}}</p>	
+			<p><a href="/edit-post/{{post.id}}" style="margin-right: 7px;">Edit </a><a style="cursor: pointer;" id="delete-post" data-id="{{post.id}}"> Delete</a></p>
+			 {{!-- <button class="btn btn-sm btn-danger" id="delete-post" data-id="{{post.id}}">DELETE</button> --}}
+
+		</td>
+		</tr>
+		{{/each}}
+	</tbody>
+	</table>  
+	{{else}}
+		No posts yet
 {{/if}}
 </main>
 
+<script src="../js/delete-post.js"></script>
