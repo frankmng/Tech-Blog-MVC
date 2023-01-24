@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
@@ -7,16 +7,18 @@
   <title>Great Times Ahead</title>
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   <link rel="stylesheet" href="/css/style.css">
+  <script src='https://kit.fontawesome.com/0e4736c2df.js' crossorigin='anonymous'></script>
 </head>
 
 <body>
-	<div class="container">
+	<div class="container" style="margin-bottom: 25px;">
 		<nav>
 		<ul>
 			<li><strong><a href="/">The Tech Frontier</a></strong></li>
 		</ul>
 		<ul>
 			{{#if logged_in}}
+				<li><a href="/dashboard">Dashboard</a></li>
 				<li id='logout' role="button">Logout</li>
 			{{else}}
 				<li><a href="/login">Sign up</a></li>

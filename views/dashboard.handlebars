@@ -1,0 +1,41 @@
+<main class="container" >
+	<h2>My Dashboard</h2>
+	<div class="grid" style="margin-bottom: 50px;">
+		<div><a href="/new-post" role="button" class="primary"><i style="margin-right:5px;"class="fa-sharp fa-solid fa-plus"></i>  New Post</a></div>
+		<div></div>
+		<div></div>
+		<div></div>	
+	</div>
+
+	{{!-- {{#each posts as |post| }}
+	<div class="grid" style="margin-top: -65px;">
+			<a href="/edit-post/{{post.id}}"><article data-theme="light">
+				<h5><strong>{{post.name}}</strong></h5>
+				<p>{{post.description}}</p>
+				<p>{{format_date post.date_created}}</p>
+			</article> </a>
+	</div>
+  {{/each}} --}}
+
+<table role="grid">
+  <thead>
+    <tr>
+      <th scope="col">My Posts</th>
+    </tr>
+  </thead>
+	<tbody>
+	{{#each posts as |post| }}
+    <tr>
+      <td>
+		  <a href="/edit-post/{{post.id}}"><p><strong>{{post.name}}</strong></p></a>
+		  <p style="margin-top:-15px;">{{post.description}}</p>
+
+	  	  <p>{{format_date post.date_created}}</p>	
+	  </td>
+    </tr>
+	{{/each}}
+  </tbody>
+</table>  
+
+</main>
+
