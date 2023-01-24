@@ -16,7 +16,7 @@
 			</article> </a>
 	</div>
   {{/each}} --}}
-
+  {{#if posts}}
 <table role="grid">
   <thead>
     <tr>
@@ -24,18 +24,19 @@
     </tr>
   </thead>
 	<tbody>
-	{{#each posts as |post| }}
+    {{#each posts as |post|}}
     <tr>
       <td>
 		  <a href="/edit-post/{{post.id}}"><p><strong>{{post.name}}</strong></p></a>
 		  <p style="margin-top:-15px;">{{post.description}}</p>
-
-	  	  <p>{{format_date post.date_created}}</p>	
+	  	  <p>{{ post.date_created}}</p>	
 	  </td>
     </tr>
 	{{/each}}
   </tbody>
 </table>  
-
+{{else}}
+	No posts yet
+{{/if}}
 </main>
 

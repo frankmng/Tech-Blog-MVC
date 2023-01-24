@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Post } = require('../../models');
+const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 const postRouter = new Router();
@@ -9,9 +9,9 @@ postRouter.post('/', withAuth, async (req, res) => {
 
     try {
 			const postData =  await Post.create({
-					name,
-					description,
-					user_id: req.session.user_id,
+				name,
+				description,
+				user_id: req.session.user_id,
 			});
 			res.status(200).json(postData);
     } catch(err){
@@ -19,7 +19,7 @@ postRouter.post('/', withAuth, async (req, res) => {
     }
 })
 
-postRouter.put('/:id', withAuth, async (req, res) => {
+postRouter.put('/edit/:id', withAuth, async (req, res) => {
 	const { name, description } = req.body;
 	try {
 		
@@ -39,5 +39,21 @@ postRouter.put('/:id', withAuth, async (req, res) => {
 			res.status(500).json(err);
 	}
 });
+
+postRouter.post('/:id', withAuth, async (req, res) => {
+    const { description } = req.body;
+		const { id } = req.params;
+
+    try {
+			const commentData =  await Comment.create({
+					description,
+					post_id: id,
+					user_id: req.session.user_id,
+			});
+			res.status(200).json(commentData);
+    } catch(err){
+			res.status(400).json(err)
+    }
+})
 
 module.exports = postRouter;

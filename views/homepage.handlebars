@@ -9,7 +9,33 @@
 </head>
 
 <body>
-  <div class="grid">
+<main class="container" style="margin-top: 50px;" >
+<h3>All Posts</h3>
+	{{!-- {{#each posts as |post| }}
+	<div class="grid" style="margin-top: -65px;">
+			<a href="/post/{{post.id}}"><article data-theme="light">
+        <h5><strong>{{post.name}}</strong></h5>
+				<p>{{format_date post.date_created}}</p>
+			</article> </a>
+	</div>
+  {{/each}} --}}
+  <table role="grid">
+
+	<tbody>
+	{{#each posts as |post| }}
+    <tr>
+      
+      <td>
+		  <p><a href="/post/{{post.id}}"><strong>{{post.name}}</strong></p></a>
+		  <p style="margin-top:-15px;">{{post.description}}</p>
+	  	  <p>{{format_date post.date_created}}</p>	
+	  </td>
+    </tr>
+	{{/each}}
+  </tbody>
+</table>  
+</main>
+
 
   </div>
 </body>
