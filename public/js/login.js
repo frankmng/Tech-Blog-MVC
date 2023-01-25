@@ -44,6 +44,9 @@ const signupFormHandler = async (event) => {
 		if (response.ok){
 			window.location.replace('/')
 		}
+		else {
+			alert('Incorrect username or password.');
+		}
 	}
 	catch(err){
 		res.status(400).json(err);

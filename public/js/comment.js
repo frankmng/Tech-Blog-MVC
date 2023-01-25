@@ -1,4 +1,5 @@
 const commentFormHandler = async (event) => {
+
 	event.preventDefault();
 	const id = window.location.toString().split('/')[
  	window.location.toString().split('/').length - 1];
@@ -15,7 +16,7 @@ const commentFormHandler = async (event) => {
 	if (response.ok) {
 			window.location.replace(`/post/${id}`);
 	} else {
-			alert('Failed to edit post');
+			alert('Failed to add comment');
 			}
 	}
 	catch(err) {
