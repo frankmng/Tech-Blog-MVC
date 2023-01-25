@@ -47,16 +47,21 @@ postRouter.post('/:id', isLoggedIn, async (req, res) => {
     const { description } = req.body;
 		const { id } = req.params;
 
+		if (!isLoggedIn) {
+			// redirect to login page
+			return res.redirect("/login");
+		}
+
     try {
 			const commentData =  await Comment.create({
-					description,
-					post_id: id,
-					user_id: req.session.user_id,
-			});
-			res.status(200).json(commentData);
-    } catch(err){
-			res.status(400).json(err)
-    }
+				description,
+				post_id: id,
+				user_id: req.session.user_id,
+				});
+				res.status(200).json(commentData);
+			} catch(err){
+				res.status(400).json(err)
+		}
 })
 
 // delete a single post

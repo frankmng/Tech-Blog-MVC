@@ -6,12 +6,21 @@
             <h4><strong>{{post.name}}</strong></h4>
             <p>{{ post.description}}</p>
             <p>Posted by <strong>{{user.name}}</strong> on {{format_date post.date_created}}</p><br>
+            
+             {{/each}}
+             {{#if logged_in}}
             <p><strong>Leave a comment</strong></p>
             <form class="comment-form" >
                 <textarea placeholder="Text" id='comment-description'></textarea>
                 <button type="submit" class="contrast">Comment</button>
             </form>
-             {{/each}}
+            {{else}}
+            <p><strong>Leave a comment</strong></p>
+            <form class="comment-form" >
+                <textarea placeholder="You must be logged in to leave a comment" id='comment-description' disabled></textarea>
+                <button type="submit" class="contrast" disabled>Comment</button>
+            </form>
+            {{/if}}
 						{{#if comments}}
             <table >
                 <thead>
