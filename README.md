@@ -26,7 +26,7 @@ Demo: https://tech-blog-mvc-01.herokuapp.com
 - [License](#license)
 
 ## Installation
-To run the application, you will need to have Node.js and MongoDB installed on your machine. Once you have those set up, you can clone this repository and run the following commands to get the application up and running:
+To run the application, you will need to have Node.js and MySql installed on your machine. Once you have those set up, you can clone this repository and run the following commands to get the application up and running:
 
     npm install
     npm start
