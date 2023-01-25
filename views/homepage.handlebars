@@ -28,7 +28,8 @@
       <td>
 		  <p><a href="/post/{{post.id}}"><strong>{{post.name}}</strong></p></a>
 		  <p style="margin-top:-15px;">{{post.description}}</p>
-	  	  <p>{{format_date post.date_created}}</p>	
+	  	  <p>Posted by <strong>{{user.name}}</strong> on {{format_date post.date_created}}</p><br>
+
 	  </td>
     </tr>
 	{{/each}}
