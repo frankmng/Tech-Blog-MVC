@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # Tech Blog MVC
 ## Description
-![tech-blog-post](https://raw.githubusercontent.com/frankmng/Ecommerce-Backend-ORM/main/assets/images/tech-blog-post.png)
+![tech-blog-post](https://raw.githubusercontent.com/frankmng/Tech-Blog-MVC/main/assets/images/tech-blog-post.png)
 
 
 This is a web application built using the Model-View-Controller (MVC) architectural pattern. The application allows users to view and post articles on various technology-related topics. The application is built using the following technologies:
